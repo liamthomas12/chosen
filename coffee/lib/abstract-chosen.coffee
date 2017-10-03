@@ -367,12 +367,14 @@ class AbstractChosen
   @browser_is_supported: ->
     if "Microsoft Internet Explorer" is window.navigator.appName
       return document.documentMode >= 8
-    if /iP(od|hone)/i.test(window.navigator.userAgent) or
-       /IEMobile/i.test(window.navigator.userAgent) or
-       /Windows Phone/i.test(window.navigator.userAgent) or
-       /BlackBerry/i.test(window.navigator.userAgent) or
-       /BB10/i.test(window.navigator.userAgent) or
-       /Android.*Mobile/i.test(window.navigator.userAgent)
+    if /iP(od|hone|ad)/i.test(window.navigator.userAgent) or # Adds iPad check
+      /IEMobile/i.test(window.navigator.userAgent) or
+      /Windows Phone/i.test(window.navigator.userAgent) or
+      /BlackBerry/i.test(window.navigator.userAgent) or
+      /BB10/i.test(window.navigator.userAgent) or
+      /Android.*Mobile/i.test(window.navigator.userAgent) or
+      /Mobile/i.test(window.navigator.userAgent) or # Catches iPad, likely others
+      /4G/i.test(window.navigator.userAgent) # Catches LG tablet
       return false
     return true
 
